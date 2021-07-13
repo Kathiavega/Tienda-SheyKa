@@ -7,15 +7,16 @@ using Tienda_Online_SheyKa.BL;
 
 namespace Tienda_Online_SheyKa.Web.Controllers
 {
-    public class HomeController : Controller
+    public class ClientesController : Controller
     {
-        // GET: Home
+        // GET: Clientes
         public ActionResult Index()
         {
-            var productosBL = new ProductosBL();
-            var listadeProductos = productosBL.ObtenerProductosActivos();
-                
-            return View(listadeProductos);
+            var clientesBL = new ClientesBL();
+            var listadeClientes = clientesBL.ObtenerClientes();
+
+
+           return View(listadeClientes);
         }
     }
 }

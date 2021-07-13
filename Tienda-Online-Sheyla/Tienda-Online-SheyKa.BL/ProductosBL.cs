@@ -16,10 +16,26 @@ namespace Tienda_Online_SheyKa.BL
             _contexto = new Contexto();
             ListadeProductos = new List<Producto>();
         }
+
         public List<Producto> ObtenerProductos()
         {
             ListadeProductos = _contexto.Productos.
-                Include("Categoria").ToList();
+                Include("Categoria")
+                .OrderBy(r => r.Categoria.Descripcion)
+                .ThenBy(r => r.Descripcion)
+                .ToList();
+
+            return ListadeProductos;
+        }
+
+        public List<Producto> ObtenerProductosActivos()
+        {
+            ListadeProductos = _contexto.Productos
+                .Include("Categoria")
+                .Where(r => r.Activo == true)
+                .OrderBy(r => r.Descripcion)
+                .ToList();
+
             return ListadeProductos;
         }
 
@@ -33,6 +49,7 @@ namespace Tienda_Online_SheyKa.BL
             {
                 var productoExistente = _contexto.Productos.Find(producto.Id);
                 productoExistente.Descripcion = producto.Descripcion;
+                productoExistente.CategoriaId = producto.CategoriaId;
                 productoExistente.Precio = producto.Precio;
                 productoExistente.UrlImagen = producto.UrlImagen;
             }

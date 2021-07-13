@@ -1,0 +1,40 @@
+﻿@model List<Tienda_Online_SheyKa.Web.Models.ClienteModel>
+
+
+
+@{
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Clientes</h2>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Telefono
+            </th>
+            <th>
+                Direccion
+            </th>
+            <th>
+                Activo
+            </th>
+        </tr>
+    </thead>
+    @foreach (var producto in Model)
+    {
+       <tr>
+            <td>@cliente.Id</td>
+            <td>@cliente.Telefono</td>
+            <td>@cliente.Direccion</td>
+           <td>@cliente.Activo</td>
+       </tr>
+    }
+</table>
+
+

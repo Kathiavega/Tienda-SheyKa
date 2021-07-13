@@ -11,20 +11,22 @@ using Tienda_Online_SheyKa.BL;
 
 namespace Tienda_Online_SheyKa.Win
 {
-    public partial class Form1 : Form
+    public partial class Form2 : Form
     {
-        public Form1()
+        public Form2()
         {
             InitializeComponent();
-            var productosBL = new ProductosBL();
-            var listadeProductos = productosBL.ObtenerProductos();
-
-            listadeProductosBindingSource.DataSource = listadeProductos;
 
         }
-
-        private void listadeProductosDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
+            var clientesBL = new ClientesBL();
+            var listadeClientes = clientesBL.ObtenerClientes();
+
+            foreach (var cliente in listadeClientes)
+         {
+                MessageBox.Show(cliente.Telefono);
+            }
 
         }
     }
